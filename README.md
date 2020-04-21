@@ -54,7 +54,7 @@ You can check your nodes state by running
 journalctl -e -u alice -u bob
 ```
 
-**NOTICE:** There is also a docker-compose implementation of up to six polkadot nodes in this repo: [docker-compose.polkadot](https://github.com/Arsalen/polkadot)
+**NOTICE:** There is also a docker-compose configuration of up to six Polkadot nodes in this repo: [docker-compose.polkadot](https://github.com/Arsalen/polkadot)
 
 License
 -------
