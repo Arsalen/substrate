@@ -3,8 +3,6 @@ Substrate
 
 Install and configure a Substrate local network with two validator nodes for Alice and Bob, note that the setup is to be used for development purposes only and it should be run on a single workstation with a single Substrate binary.
 
-Available on Ansible Galaxy: [arsalen.substrate](https://galaxy.ansible.com/arsalen/substrate)
-
 Requirements
 ------------
 
@@ -35,6 +33,11 @@ You need the following inventory file and playbook prior to your setup.
   - hosts: all
     roles:
       - arsalen.substrate
+```
+
+Install role
+```bash
+ansible-galaxy install arsalen.substrate
 ```
 
 Then run the following commands
