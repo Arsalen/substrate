@@ -1,0 +1,34 @@
+---
+
+- name: Check rust installation
+  shell: "{{ base_path }}/.cargo/bin/rustc --version"
+  register: rust_version
+  failed_when: false
+
+- name: Run installer
+  shell: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+  when: rust_version.stdout|length == 0
+
+- name: List installed rust channels
+  shell: "{{ base_path }}/.cargo/bin/rustup toolchain list"
+  register: installed_rust_channels
+  
+- name: Install rust channels
+  shell: "{{ base_path }}/.cargo/bin/rustup toolchain install {{ item }}"
+  when: 'item not in installed_rust_channels.stdout'
+  loop: "{{ rust_channels }}"
+
+- name: Set rust default channel
+  shell: "{{ base_path }}/.cargo/bin/rustup default {{ rust_default }}"
+
+- name: Update rust
+  shell: "{{ base_path }}/.cargo/bin/rustup update"
+  when: rust_update|bool == true
+
+- name: Install rust required target
+  shell: "{{ base_path }}/.cargo/bin/rustup target add {{ rust_target }}"
+
+- name: Rust multiplex
+  template:
+      src: config.j2
+      dest: "{{ base_path }}/.cargo/config"

@@ -1,0 +1,12 @@
+---
+# vars file for substrate
+
+alice_port: 30333
+alice_ws_port: 9944
+alice_rpc_port: 9933
+
+bob_port: 30334
+bob_ws_port: 9945
+bob_rpc_port: 9934
+
+bootnode: "/ip4/127.0.0.1/tcp/{{ target_port }}/p2p/QmWirz83uJTFEUVzoshXUf2SY2nTSJetd4nJGkZ7kozZPb"

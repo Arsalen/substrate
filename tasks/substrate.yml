@@ -1,0 +1,13 @@
+---
+
+- name: Clone substrate repo
+  git:
+    repo: "{{ substrate_repo }}"
+    dest: "{{ base_path }}/substrate"
+    version: "{{ substrate_version }}"
+    depth: 1
+
+- name: Compile source
+  shell: cargo build --release
+  args:
+    chdir: "{{ base_path }}/substrate"

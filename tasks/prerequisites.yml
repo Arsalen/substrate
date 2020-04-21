@@ -1,0 +1,17 @@
+---
+
+- name: Install prerequisites
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - cmake
+    - pkg-config
+    - libssl-dev
+    - git
+    - gcc
+    - build-essential
+    - curl
+    - clang
+    - libclang-dev

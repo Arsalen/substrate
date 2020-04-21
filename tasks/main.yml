@@ -1,0 +1,36 @@
+---
+# tasks file for substrate
+
+- name: Base user
+  set_fact:
+    base_user: "{{ ansible_user }}"
+  when: ansible_user is defined
+
+- name: Home directory
+  shell: echo $HOME
+  register: home_dir
+  become: yes
+  become_user: "{{ base_user }}"
+
+- name: Base path
+  set_fact:
+    base_path: "{{ home_dir.stdout }}"
+  when: home_dir is defined
+
+- name: Prerequisites
+  import_tasks: prerequisites.yml
+
+- name: RUST
+  import_tasks: rust.yml
+  become: yes
+  become_user: "{{ base_user }}"
+
+- name: Substrate
+  import_tasks: substrate.yml
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ base_path }}/.cargo/bin"
+  become: yes
+  become_user: "{{ base_user }}"
+
+- name: Service
+  import_tasks: service.yml

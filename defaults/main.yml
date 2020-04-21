@@ -1,0 +1,12 @@
+---
+# defaults file for substrate
+
+rust_channels:
+  - stable
+  - nightly
+rust_default: nightly
+rust_update: true
+rust_target: wasm32-unknown-unknown
+
+substrate_repo: "https://github.com/substrate-developer-hub/substrate-node-template.git"
+substrate_version: v2.0.0-alpha.5

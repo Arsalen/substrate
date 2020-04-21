@@ -1,0 +1,21 @@
+[Unit]
+Description=Bob substrate Service
+
+[Service]
+
+ExecStart={{ base_path }}/substrate/target/release/node-template \
+  --base-path /bob \
+  --chain local \
+  --bob \
+  --port {{ bob_port }} \
+  --ws-port {{ bob_ws_port }} \
+  --rpc-port {{ bob_rpc_port }} \
+  --bootnodes {{ bootnode }}
+
+Restart=always
+
+StandardOutput=append:/var/log/substrate/bob.output.log
+StandardError=append:/var/log/substrate/bob.error.log
+
+[Install]
+WantedBy=multi-user.target

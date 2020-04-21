@@ -1,0 +1,23 @@
+galaxy_info:
+
+  author: Arsalen <github.com/Arsalen>
+
+  description: Provisioning and deployment of a substrate private network (Alice and Bob setup)
+
+  license: MIT
+
+  min_ansible_version: 2.9
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - Bionic Beaver
+    - Xenial Xerus
+
+  galaxy_tags:
+  - parity
+  - substrate
+  - alice
+  - bob
+
+dependencies: []
